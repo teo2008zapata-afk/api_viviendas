@@ -21,6 +21,20 @@ def get_viviendas(db: Session = Depends(get_db)):
 
 
 # ====================================
+# GET: Consultar viviendas por barrio
+# ====================================
+@app.get("/viviendas/barrio/{neighborhood}", response_model=list[dwellingResponse])
+def get_viviendas_por_barrio(
+    neighborhood: str,
+    db: Session = Depends(get_db)
+):
+    viviendas = db.query(dwelling).filter(
+        dwelling.neighborhood.ilike(neighborhood)
+    ).all()
+    return viviendas
+
+
+# ====================================
 # GET: Consultar una vivienda
 # ====================================
 @app.get("/viviendas/{Dwelling_id}", response_model=dwellingResponse)
