@@ -7,7 +7,8 @@ class dwelling(Base):
 
     # Columnas de la tabla
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String(100), nullable=False)
+    code = Column(String(100), unique=True, nullable=False)
+    address = Column(String(100), nullable=False)
     neighborhood = Column(String(100), nullable=False)
-    structure = Column(String(100), nullable=False)
-    floors = Column(Integer, nullable=False)
+    rooms = Column(Integer, nullable=False)
+    area = Column(Integer, nullable=False)

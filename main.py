@@ -51,10 +51,11 @@ def create_Dwelling(
 ):
 
     Dwelling = dwelling(
-        name=data.name,
+        code=data.code,
+        address=data.address,
         neighborhood=data.neighborhood,
-        structure=data.structure,
-        floors=data.floors
+        rooms=data.rooms,
+        area=data.area
     )
 
     db.add(Dwelling)
@@ -83,10 +84,11 @@ def update_Dwelling(
             detail="dwelling not found"
         )
 
-    Dwelling.name = data.name
+    Dwelling.code = data.code
+    Dwelling.address = data.address
     Dwelling.neighborhood = data.neighborhood
-    Dwelling.structure = data.structure
-    Dwelling.floors = data.floors
+    Dwelling.rooms = data.rooms
+    Dwelling.area = data.area
 
     db.commit()
     db.refresh(Dwelling)
